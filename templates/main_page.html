@@ -1,0 +1,38 @@
+<html>
+<head>
+<style type="text/css">
+b{
+	color:red;
+}
+</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</script>
+</head>
+<body>
+<h1>Upload File on Bluemix</h1>
+<form method="post" action="{{ url_for('upload_file') }}" class="form-group">
+<input type="file" name="uploadfile" id="uploadfile"><br>
+<input type="submit" value="Upload File" class="btn btn-primary"><br>
+<div>
+<h4>File in ClearDb</h4>
+<div>
+<table class="table table-striped">
+<tr><td>FileName</td></tr>
+{% for row in data %}
+<tr>
+<td><a href="{{ url_for('download_file',filename=row[0]) }}">{{ row[0] }}</a></td>
+</tr>
+{% endfor %}
+</table>
+</div>
+<div><b>
+{% if message1 %}
+{{ message1 }}
+{% endif %}
+{% if message %}
+{{ message }}
+{% endif %}
+</b></div>
+</form>
+</body>
+</html>
